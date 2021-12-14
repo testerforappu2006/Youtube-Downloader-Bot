@@ -49,21 +49,16 @@ async def catch_youtube_dldata(c, q):
         "/" + str(q.message.chat.id) + ".jpg"
     print(thumb_image_path)
     if os.path.exists(thumb_image_path):
-        width = 0
-        height = 0
         metadata = extractMetadata(createParser(thumb_image_path))
         #print(metadata)
-        if metadata.has("width"):
-            width = metadata.get("width")
-        if metadata.has("height"):
-            height = metadata.get("height")
+        width = metadata.get("width") if metadata.has("width") else 0
+        height = metadata.get("height") if metadata.has("height") else 0
         img = Image.open(thumb_image_path)
         if cb_data.startswith(("audio", "docaudio", "docvideo")):
             img.resize((320, height))
         else:
             img.resize((90, height))
         img.save(thumb_image_path, "JPEG")
-     #   print(thumb_image_path)
     if not cb_data.startswith(("video", "audio", "docaudio", "docvideo")):
         print("no data found")
         raise ContinuePropagation
