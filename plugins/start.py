@@ -4,8 +4,7 @@ from pyrogram import Client, Filters, StopPropagation, InlineKeyboardButton, Inl
 @Client.on_message(Filters.command(["start"]), group=-2)
 async def start(client, message):
     joinButton = InlineKeyboardMarkup([[
-         InlineKeyboardButton("📢 Update Channel 📢", url="https://t.me/Mo_Tech_YT"),
-         InlineKeyboardButton("☺️ Deploy Now ☺️", url="https://t.me/aryanvikash")]
+         InlineKeyboardButton("📢 my father 📢", url="https://t.me/Mo_Tech_YT")]
     ])
     welcomed = f"Hey <b>{message.from_user.first_name}</b>\n/help for More info"
     await message.reply_text(welcomed, reply_markup=joinButton)
